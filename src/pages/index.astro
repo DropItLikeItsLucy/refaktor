@@ -27,15 +27,69 @@ import Layout from '../layouts/Layout.astro';
     <div id="content-area" class="hidden">
       <section id="team-content" class="content-section">
         <h2>Our Team</h2>
-        <p>Meet the amazing people building your next website.</p>
+        <p>Refaktor is a compact crew of senior engineers, designers, and product thinkers who live for lean code and measurable wins. We automate the boring, chase every millisecond, and treat your goals like blockers until they’re crushed. Friendly, transparent, and relentlessly future‑focused—we ship the extra 1 % that puts you ahead.
+		</p>
         <!-- Add team member details here -->
       </section>
 
-      <section id="projects-content" class="content-section">
-        <h2>Our Projects</h2>
-        <p>Check out some of the stunning websites we've delivered.</p>
-        <!-- Add project showcases here -->
-      </section>
+            <!-- Find this section -->
+			<section id="projects-content" class="content-section">
+				{/* --- Replace the content inside this section --- */}
+				<h2>Our Projects</h2>
+				<p>Check out some of the stunning websites we've delivered.</p>
+		
+				{/* --- Add the Project Grid Below --- */}
+				<div class="projects-grid">
+				  {/* Project Card 1 */}
+				  <article class="project-card">
+					<img
+					  src="/ext.png"
+					  alt="Screenshot of Project One"
+					  class="project-thumbnail"
+					  loading="lazy"  /* Good practice for images below the fold */
+					  width="400"     /* Actual width of placeholder */
+					  height="300"    /* Actual height of placeholder */
+					/>
+					<div class="project-info">
+					  <span class="project-name">Client Project Alpha</span>
+					</div>
+				  </article>
+		
+				  {/* Project Card 2 */}
+				  <article class="project-card">
+					<img
+					  src="/ext.png"
+					  alt="Screenshot of Project Two"
+					  class="project-thumbnail"
+					  loading="lazy"
+					  width="400"
+					  height="300"
+					/>
+					<div class="project-info">
+					  <span class="project-name">E-commerce Platform</span>
+					</div>
+				  </article>
+		
+				  {/* Project Card 3 */}
+				  <article class="project-card">
+					<img
+					  src="/ext.png"
+					  alt="Screenshot of Project Three"
+					  class="project-thumbnail"
+					  loading="lazy"
+					  width="400"
+					  height="300"
+					/>
+					<div class="project-info">
+					  <span class="project-name">Startup Landing Page</span>
+					</div>
+				  </article>
+		
+				   {/* Add more project cards here later */}
+		
+				</div> {/* End .projects-grid */}
+				{/* --- End of Added Content --- */}
+			  </section>
 
       <section id="contact-content" class="content-section">
         <h2>Contact Us</h2>
@@ -48,186 +102,248 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  :root {
-    --primary-color: #6a11cb; /* Original purple */
-    --secondary-color: #2575fc; /* Original blue */
-    /* --text-color: #333; -- No longer using this globally */
-    /* --bg-color: #fff; -- No longer using this globally */
-    --light-text-color: #f0f0f0; /* Light color for text on gradient */
-    --transition-speed: 0.8s;
-  }
+	:root {
+	  --primary-color: #6a11cb;
+	  --secondary-color: #2575fc;
+	  /* --- CHANGE HERE: Back to dark text / white bg --- */
+	  --text-color: #333;
+	  --bg-color: #fff;
+	  /* --light-text-color: #f0f0f0; -- No longer needed */
+	  /* --- END CHANGE --- */
+	  --transition-speed: 0.8s;
+	}
+  
+	body {
+	  font-family: sans-serif; /* Default fallback */
+	  margin: 0;
+	  /* --- CHANGE HERE: Revert background --- */
+	  background-color: var(--bg-color);
+	  color: var(--text-color);
+	  /* --- END CHANGE --- */
+	}
+  
+	/* Adjust content text colors if they were changed */
+	.content-section h2 {
+		color: var(--primary-color); /* Example: Use primary color for headings */
+	}
+  
+	.content-section p {
+		color: var(--text-color); /* Use default dark text */
+		line-height: 1.6; /* Improve readability */
+		opacity: 1; /* Reset opacity if changed */
+	}
+  
+	/* Adjust link color in Contact section */
+	#contact-content a {
+		color: var(--primary-color); /* Use primary color for link */
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	 #contact-content a:hover {
+		color: var(--secondary-color);
+	 }
+  
+  
+	/* --- Styles for nav button --- */
+	.nav-button {
+	  padding: 0.7rem 1.4rem; /* Slightly adjusted padding perhaps */
+	  background-color: var(--primary-color); /* Keep the button background */
+	  color: white; /* Keep text white for contrast on button */
+	  border: none;
+	  border-radius: 5px;
+	  cursor: pointer;
+	  transition: background-color 0.2s ease, transform 0.2s ease;
+  
+	  /* --- ADD FONT STYLES HERE --- */
+	  font-family: 'Space Grotesk', sans-serif; /* Use Space Grotesk, fallback */
+	  font-weight: 700; /* Bold */
+	  text-transform: uppercase; /* All caps */
+	  letter-spacing: -0.002em; /* -2% tracking (em is relative to font size) */
+	  font-size: 0.9rem; /* Adjust size as needed */
+	  /* --- END FONT STYLES --- */
+	}
+  
+	.nav-button:hover {
+	  background-color: var(--secondary-color);
+	  transform: translateY(-2px);
+	}
+	 .nav-button.active {
+	  background-color: var(--secondary-color);
+	  box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Darker shadow is fine on white bg */
+	}
+  
+	/* ... (keep all your other styles for layout, animation, logo, etc.) ... */
+  
+	#landing-page-container {
+	  position: relative;
+	  min-height: 100vh;
+	  width: 100%;
+	  overflow: hidden;
+	  display: flex;
+	  flex-direction: column;
+	}
+  
+	#logo-nav-wrapper {
+	  position: absolute;
+	  left: 50%;
+	  width: auto;
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  padding: 1rem;
+	  box-sizing: border-box;
+	  top: 50%;
+	  transform: translate(-50%, -50%);
+	  transition: top var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1),
+				  transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+	   z-index: 10;
+	}
+  
+	#logo-nav-wrapper.loaded {
+	   top: 10vh;
+	   transform: translate(-50%, 0);
+	}
+  
+	#company-logo {
+	  display: block;
+	  margin-bottom: 1rem;
+	  animation: pulse 3s infinite ease-in-out;
+	}
+  
+	#logo-nav-wrapper.loaded #company-logo {
+	   margin-bottom: 2rem;
+	}
+  
+	#main-nav {
+	  display: flex;
+	  gap: 1rem;
+	  opacity: 0;
+	  transform: translateY(20px);
+	  transition: opacity calc(var(--transition-speed) * 0.8) ease-out,
+				  transform calc(var(--transition-speed) * 0.8) ease-out;
+	  transition-delay: calc(var(--transition-speed) * 0.5);
+	  pointer-events: none;
+	}
+  
+	#main-nav.visible {
+	  opacity: 1;
+	  transform: translateY(0);
+	  pointer-events: auto;
+	}
+  
+	#content-area {
+	  padding: 2rem;
+	  width: 100%;
+	  max-width: 960px;
+	  margin: 0 auto;
+	  box-sizing: border-box;
+	  opacity: 0;
+	  transition: opacity calc(var(--transition-speed) * 0.8) ease-out;
+	  transition-delay: calc(var(--transition-speed) * 0.6);
+	  pointer-events: none;
+	  margin-top: 0;
+	   position: relative;
+	   z-index: 5;
+	}
+  
+	#content-area.visible {
+	   opacity: 1;
+	   pointer-events: auto;
+	   margin-top: calc(10vh + 150px + 50px + 4rem); /* Keep this calculation */
+	}
+  
+	.content-section {
+	  display: none;
+	  animation: fadeIn 0.5s ease forwards;
+	  padding: 1.5rem 0; /* Adjust padding if needed */
+	  border-radius: 0; /* Remove border-radius if added for gradient bg */
+	  background-color: transparent; /* Ensure no background color */
+	}
+  
+	.content-section.active {
+	  display: block;
+	}
+  
+	.hidden {
+		opacity: 0;
+		pointer-events: none;
+	}
+  
+	@keyframes pulse {
+	  0% { transform: scale(1); opacity: 0.9; }
+	  50% { transform: scale(1.08); opacity: 1; }
+	  100% { transform: scale(1); opacity: 0.9; }
+	}
+  
+	@keyframes fadeIn {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+	/* Styles for Project Showcase */
 
-  body {
-    font-family: sans-serif;
-    margin: 0;
-    /* --- CHANGE HERE --- */
-    /* Apply the gradient background */
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    /* Ensure the gradient covers the full height */
-    background-attachment: fixed; /* Keeps gradient fixed during scroll */
-    /* Change default text color for readability on gradient */
-    color: var(--light-text-color);
-    /* --- END CHANGE --- */
-  }
+/* Styles for Project Showcase */
 
-  /* You might need to adjust other elements if they had specific colors */
-  /* For example, ensure content section text is readable */
-  .content-section h2 {
-      /* Optional: Make headings slightly bolder white or use a gradient color */
-      color: white;
-      /* Or maybe: color: var(--secondary-color); */
-  }
+.projects-grid {
+  display: grid;
+  /* --- CHANGE HERE: Adjust minmax and gap --- */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Lower min width */
+  gap: 1.5rem; /* Slightly reduce gap */
+  /* --- END CHANGE --- */
+  margin-top: 2.5rem;
+  padding: 0;
+  list-style: none;
+}
 
-  .content-section p {
-      color: var(--light-text-color); /* Ensure paragraphs inherit correctly */
-      opacity: 0.9; /* Slightly less prominent than headings */
-  }
+.project-card {
+  background-color: #f9f9f9;
+  border-radius: 6px; /* Slightly smaller radius */
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); /* Slightly lighter shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
 
-    /* Adjust link color in Contact section for visibility */
-  #contact-content a {
-      color: white; /* Make link white */
-      font-weight: bold;
-      text-decoration: underline; /* Underline for clarity */
-  }
-   #contact-content a:hover {
-      /* Optional: slightly different hover effect */
-      color: #ddd;
-   }
+.project-card:hover {
+  transform: translateY(-4px); /* Slightly less lift */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
 
-  /* Styles for buttons, logo-nav-wrapper, etc., remain largely the same */
-  /* ... (keep the rest of your existing styles for positioning, animation, etc.) ... */
+.project-thumbnail {
+  display: block;
+  width: 100%;
+  height: auto;
+   aspect-ratio: 4 / 3;
+   object-fit: cover;
+}
 
-  #landing-page-container {
-    position: relative;
-    min-height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
+.project-info {
+  background-color: var(--primary-color);
+  /* --- CHANGE HERE: Reduce padding --- */
+  padding: 0.6rem 0.8rem; /* Smaller padding */
+  /* --- END CHANGE --- */
+  margin-top: -1px;
+}
 
-  #logo-nav-wrapper {
-    position: absolute;
-    left: 50%;
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-    box-sizing: border-box;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    transition: top var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1),
-                transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
-     /* Ensure logo/nav appear above the gradient */
-     z-index: 10;
-  }
+.project-name {
+  display: block;
+  color: white;
+  /* --- CHANGE HERE: Reduce font size --- */
+  font-size: 0.9rem; /* Smaller font size */
+  /* --- END CHANGE --- */
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap; /* Prevent wrapping if name is long */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ... if name is too long */
+}
 
-  #logo-nav-wrapper.loaded {
-     top: 10vh;
-     transform: translate(-50%, 0);
-  }
+/* --- End of Project Showcase Styles --- */
 
-  #company-logo {
-    display: block;
-    margin-bottom: 1rem;
-    animation: pulse 3s infinite ease-in-out;
-  }
+/* --- End of Project Showcase Styles --- */
+  </style>
 
-  #logo-nav-wrapper.loaded #company-logo {
-     margin-bottom: 2rem;
-  }
-
-  #main-nav {
-    display: flex;
-    gap: 1rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity calc(var(--transition-speed) * 0.8) ease-out,
-                transform calc(var(--transition-speed) * 0.8) ease-out;
-    transition-delay: calc(var(--transition-speed) * 0.5);
-    pointer-events: none;
-  }
-
-  #main-nav.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  .nav-button {
-    padding: 0.6rem 1.2rem;
-    /* Keep button background, it contrasts well */
-    background-color: var(--primary-color);
-    /* Button text needs to be light */
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.5); /* Optional: add subtle border */
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-  }
-
-  .nav-button:hover {
-    background-color: var(--secondary-color);
-    transform: translateY(-2px);
-  }
-   .nav-button.active {
-    background-color: var(--secondary-color);
-    box-shadow: 0 0 8px rgba(255,255,255,0.4); /* Lighter shadow */
-  }
-
-  #content-area {
-    padding: 2rem;
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
-    box-sizing: border-box;
-    opacity: 0;
-    transition: opacity calc(var(--transition-speed) * 0.8) ease-out;
-    transition-delay: calc(var(--transition-speed) * 0.6);
-    pointer-events: none;
-    margin-top: 0;
-     /* Ensure content appears above the gradient */
-     position: relative; /* Needed if adding pseudo-elements later */
-     z-index: 5;
-  }
-
-  #content-area.visible {
-     opacity: 1;
-     pointer-events: auto;
-     margin-top: calc(10vh + 150px + 50px + 4rem);
-  }
-
-  .content-section {
-    display: none;
-    animation: fadeIn 0.5s ease forwards;
-    padding: 1.5rem;
-    border-radius: 8px;
-    /* Optional: Add a subtle background to content sections */
-    /* background-color: rgba(0, 0, 0, 0.1); */
-  }
-
-  .content-section.active {
-    display: block;
-  }
-
-  .hidden {
-      opacity: 0;
-      pointer-events: none;
-  }
-
-  @keyframes pulse {
-    0% { transform: scale(1); opacity: 0.9; }
-    50% { transform: scale(1.08); opacity: 1; }
-    100% { transform: scale(1); opacity: 0.9; }
-  }
-
-  @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-  }
-</style>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const logoNavWrapper = document.getElementById('logo-nav-wrapper');
@@ -237,7 +353,7 @@ import Layout from '../layouts/Layout.astro';
     const contentSections = document.querySelectorAll('.content-section');
 
     // --- Initial Animation Trigger ---
-    const initialDelay = 3000; // 5 seconds
+    const initialDelay = 1000; // 3 seconds
 
     const revealContent = () => {
       // --- THIS IS THE KEY CHANGE ---
